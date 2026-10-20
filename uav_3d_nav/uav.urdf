@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<robot name="simple_quad">
+  <!-- Single dynamic body -->
+  <link name="base_link">
+    <!-- Inertial matches your controller mass -->
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.6"/>
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.03"/>
+    </inertial>
+
+    <!-- Visual: central body -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.12 0.12 0.04"/></geometry>
+      <material name="gray"><color rgba="0.3 0.3 0.3 1"/></material>
+    </visual>
+
+    <!-- Collision: central body only (simple, robust) -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.12 0.12 0.04"/></geometry>
+    </collision>
+
+    <!-- Visual-only arms (no extra links, no mass) -->
+    <visual>
+      <origin xyz="0 0 0.01" rpy="0 0 0"/>
+      <geometry><box size="0.48 0.02 0.02"/></geometry>
+      <material name="black"><color rgba="0.1 0.1 0.1 1"/></material>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0.01" rpy="0 0 0"/>
+      <geometry><box size="0.02 0.48 0.02"/></geometry>
+      <material name="black"><color rgba="0.1 0.1 0.1 1"/></material>
+    </visual>
+
+    <!-- Visual-only rotors (four discs) -->
+    <visual>
+      <origin xyz="0.22 0.22 0.015" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.08" length="0.005"/></geometry>
+      <material name="prop"><color rgba="0.12 0.12 0.12 1"/></material>
+    </visual>
+    <visual>
+      <origin xyz="0.22 -0.22 0.015" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.08" length="0.005"/></geometry>
+      <material name="prop"/>
+    </visual>
+    <visual>
+      <origin xyz="-0.22 0.22 0.015" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.08" length="0.005"/></geometry>
+      <material name="prop"/>
+    </visual>
+    <visual>
+      <origin xyz="-0.22 -0.22 0.015" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.08" length="0.005"/></geometry>
+      <material name="prop"/>
+    </visual>
+  </link>
+</robot>
